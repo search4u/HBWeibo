@@ -53,16 +53,22 @@
     //message
     HBMessageController *message = [[HBMessageController alloc] init];
     message.title = @"消息";
+    message.tabBarItem.image = [UIImage imageNamed:@"tabbar_message_center_os7"];
+    message.tabBarItem.selectedImage = [UIImage imageNamed:@"tabbar_message_center_selected_os7"];
     [self addChildViewController:[[UINavigationController alloc] initWithRootViewController:message]];
     [tabar addButtonWithItem:message.tabBarItem];
     //discover
     HBDiscoverController *discover = [[HBDiscoverController alloc] init];
     discover.title = @"发现";
+    discover.tabBarItem.image = [UIImage imageNamed:@"tabbar_discover_os7"];
+    discover.tabBarItem.selectedImage = [UIImage imageNamed:@"tabbar_discover_selected_os7"];
     [self addChildViewController:[[UINavigationController alloc] initWithRootViewController:discover]];
     [tabar addButtonWithItem:discover.tabBarItem];
     //Me
     HBMeController *me = [[HBMeController alloc] init];
     me.title = @"我";
+    me.tabBarItem.image = [UIImage imageNamed:@"tabbar_profile_os7"];
+    me.tabBarItem.selectedImage = [UIImage imageNamed:@"tabbar_profile_selected_os7"];
     [self addChildViewController:[[UINavigationController alloc] initWithRootViewController:me]];
     [tabar addButtonWithItem:me.tabBarItem];
 }

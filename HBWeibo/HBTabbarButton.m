@@ -17,8 +17,8 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         self.titleLabel.font = [UIFont systemFontOfSize:13];
-        [self setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-        [self setTitleColor:[UIColor blueColor] forState:UIControlStateHighlighted];
+        [self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [self setTitleColor:[UIColor orangeColor] forState:UIControlStateSelected];
         self.imageView.contentMode = UIViewContentModeCenter;
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
     }
@@ -39,6 +39,11 @@
 
 - (CGRect)imageRectForContentRect:(CGRect)contentRect {
     return CGRectMake(0, 0,contentRect.size.width, contentRect.size.height * 0.7);
+}
+
+- (void)setHighlighted:(BOOL)highlighted
+{
+    
 }
 
 @end
