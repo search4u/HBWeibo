@@ -12,12 +12,20 @@
 @interface HBTabbar()
 @property (nonatomic,strong) NSMutableArray *buttons;
 @property (nonatomic,weak) HBTabbarButton *selectedBtn;
+@property (nonatomic,weak) UIButton *composeBtn;
 @end
 
 @implementation HBTabbar
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
+        UIButton *composeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [composeBtn setBackgroundImage:[UIImage imageNamed:@"tabbar_compose_button_os7"] forState:UIControlStateNormal];
+        [composeBtn setBackgroundImage:[UIImage imageNamed:@"tabbar_compose_button_highlighted_os7"] forState:UIControlStateHighlighted];
+        [composeBtn setImage:[UIImage imageNamed:@"tabbar_compose_icon_add"] forState:UIControlStateNormal];
+        [composeBtn setImage:[UIImage imageNamed:@"tabbar_compose_icon_add_highlighted_os7"] forState:UIControlStateHighlighted];
+        [self addSubview:composeBtn];
+        self.composeBtn = composeBtn;
     }
     return self;
 }
@@ -25,14 +33,23 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     //计算并设置自控件位置
+    CGFloat w = self.frame.size.width;
+    CGFloat h = self.frame.size.height;
+
     NSInteger btnCnts = self.subviews.count;
     int btnY = 0;
     int btnW = self.frame.size.width / btnCnts;
     int btnH = self.frame.size.height;
-    for (int i=0; i<btnCnts; ++i) {
+    
+    self.composeBtn.bounds = CGRectMake(0, 0, btnW, btnH);
+    self.composeBtn.center = CGPointMake(w/2, h/2);
+    for (int i=0; i<self.buttons.count; ++i) {
         int btnX = i * btnW;
-        HBTabbarButton *btn = self.subviews[i];
+        HBTabbarButton *btn = self.buttons[i];
         btn.tag = i;
+        if (i > 1) {
+            btnX += btnW;
+        }
         btn.frame = CGRectMake(btnX, btnY, btnW, btnH);
     }
 }

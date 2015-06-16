@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "HBTabBarController.h"
+#import "HBAuthViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -19,8 +20,8 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window makeKeyAndVisible];
     
-    HBTabBarController *tc = [[HBTabBarController alloc] init];
-    self.window.rootViewController = tc;
+    //HBTabBarController *tc = [[HBTabBarController alloc] init];
+    self.window.rootViewController = [[HBAuthViewController alloc]init];
     return YES;
 }
 
